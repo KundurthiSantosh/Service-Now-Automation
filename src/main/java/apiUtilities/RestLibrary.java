@@ -23,8 +23,6 @@ public class RestLibrary {
     /**
      * This function returns a Response of the GET request.
      *
-     * @author Santosh Kundurthi
-     * @return Response of GET request
      */
     private static final Supplier<Response> getRequest = () -> {
         RequestSpecification requestSpecification = RestAssured.given().auth().basic(configFileReader.getUsername(), configFileReader.getPassword());
@@ -35,8 +33,6 @@ public class RestLibrary {
     /**
      * This function returns a Response of the PUT request.
      *
-     * @author Santosh Kundurthi
-     * @return Response of PUT request
      */
     private static final Supplier<Response> putRequest = () -> {
         RequestSpecification requestSpecification = RestAssured.given().auth().basic(configFileReader.getUsername(), configFileReader.getPassword());
@@ -51,8 +47,6 @@ public class RestLibrary {
     /**
      * This function returns a Response of the POST request.
      *
-     * @author Santosh Kundurthi
-     * @return Response of POST request
      */
     private static final Supplier<Response> postRequest = () -> {
         RequestSpecification requestSpecification = RestAssured.given().auth().basic(configFileReader.getUsername(), configFileReader.getPassword());
@@ -67,8 +61,6 @@ public class RestLibrary {
     /**
      * This function returns a Response of the DELETE request.
      *
-     * @author Santosh Kundurthi
-     * @return Response of DELETE request
      */
     private static final Supplier<Response> deleteRequest = () -> {
         RequestSpecification requestSpecification = RestAssured.given().auth().basic(configFileReader.getUsername(), configFileReader.getPassword());
@@ -115,8 +107,6 @@ public class RestLibrary {
      * object
      *
      * @author Santosh Kundurthi
-     * @param POJOClass
-     *
      *
      */
     public void verifyValues(String POJOClass) {
@@ -136,8 +126,7 @@ public class RestLibrary {
                                         + jsonObjectIterator.getValueFromKey(entry.getKey())
                                         + " did not match with expected value " + entry.getValue().toString());*/
 
-            } else
-                ;
+            }
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -158,13 +147,17 @@ public class RestLibrary {
 
     public static String setPathQueryParameters(String API){
         if (APIGlobals.userData.get("pathParameters") != null) {
+            StringBuilder APIBuilder = new StringBuilder(API);
             for (Map.Entry<String, Object> entry : APIGlobals.userData.get("pathParameters").entrySet())
-                API += "/" + entry.getValue().toString();
+                APIBuilder.append("/").append(entry.getValue().toString());
+            API = APIBuilder.toString();
         }
         if (APIGlobals.userData.get("queryParameters") != null) {
             API += "?";
+            StringBuilder APIBuilder = new StringBuilder(API);
             for (Map.Entry<String, Object> entry : APIGlobals.userData.get("queryParameters").entrySet())
-                API += entry.getKey() + "=" + entry.getValue().toString();
+                APIBuilder.append(entry.getKey()).append("=").append(entry.getValue().toString());
+            API = APIBuilder.toString();
         }
         return API;
     }
