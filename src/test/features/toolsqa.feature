@@ -1,4 +1,4 @@
-Feature: Page Element validation on DemoQA
+Feature: Page Element validation on DemoQA Test
 
   Background: User is on demoQA home page
     Given user is on demoQA Home Page
