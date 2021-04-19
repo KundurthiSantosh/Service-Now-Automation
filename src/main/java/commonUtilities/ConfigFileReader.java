@@ -1,5 +1,7 @@
 package commonUtilities;
 
+import jdk.nashorn.internal.objects.NativeRegExp;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,7 +11,7 @@ import java.util.Properties;
 public class ConfigFileReader {
 
     private Properties properties;
-    private final String propertyFilePath= "configs//Configuration.properties";
+    private final String propertyFilePath= "src/test/resources/configuration.properties";
 
 
     public ConfigFileReader(){
@@ -47,4 +49,23 @@ public class ConfigFileReader {
         else throw new RuntimeException("url not specified in the Configuration.properties file.");
     }
 
+    public String getTestDataPath(){
+        String testDataPath = properties.getProperty("test-data-path");
+        if(testDataPath != null) return testDataPath;
+        else throw new RuntimeException("test data path not specified in the Configuration.properties file.");
+    }
+
+    public String getUsername(){
+        String username = properties.getProperty("username");
+        if(username != null) return username;
+        else
+            throw new RuntimeException("Username not found in the Configuration.properties file.");
+    }
+
+    public String getPassword(){
+        String password = properties.getProperty("password");
+        if(password != null) return password;
+        else
+            throw new RuntimeException("Password not found in the Configuration.properties file.");
+    }
 }
