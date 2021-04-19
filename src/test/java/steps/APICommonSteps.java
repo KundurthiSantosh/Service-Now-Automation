@@ -11,6 +11,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 
 public class APICommonSteps {
 
@@ -19,27 +20,17 @@ public class APICommonSteps {
     ConfigFileReader config = new ConfigFileReader();
 
     @Given("^I want to test API \"([^\"]*)\" for test case \"([^\"]*)\"$")
-    public void setAPIEndpointURL(String API, String testCaseName){
-        APIGlobals.userData = yaml.loadYaml(testCaseName.trim(), "testdata.yml");
-        if (APIGlobals.userData.get("pathParameters") != null) {
-            for (Map.Entry<String, Object> entry : APIGlobals.userData.get("pathParameters").entrySet())
-                API += "/" + entry.getValue().toString();
-        }
-        if (APIGlobals.userData.get("queryParameters") != null) {
-            API += "?";
-            for (Map.Entry<String, Object> entry : APIGlobals.userData.get("queryParameters").entrySet())
-                API += entry.getKey() + "=" + entry.getValue().toString();
-        }
+    public void setAPIEndpointURL(String API, String testCaseName) {
+        APIGlobals.userData = yaml.loadYaml(testCaseName.trim(), "testdata.yaml");
+        API = RestLibrary.setPathQueryParameters(API.toLowerCase());
         APIGlobals.endPointURL = String.format("%s%s", config.getApiBaseUrl(), API);
         APIGlobals.testName = testCaseName;
-        System.out.println("URL " + APIGlobals.endPointURL);
     }
 
     @When("^I set header content type as \"([^\"]*)\"$")
     public void setHeader(String contentType) {
         if (contentType != null && !contentType.isEmpty()) {
             APIGlobals.contentType = contentType;
-        } else {
         }
     }
 
@@ -51,35 +42,13 @@ public class APICommonSteps {
                 jsonObject.addProperty(entry.getKey(), (String) entry.getValue());
             APIGlobals.requestBody = jsonObject.toString();
         }
-        switch (requestType) {
-            case "GET":
-                APIGlobals.response = rest.GETRequest();
-                break;
-
-            case "POST":
-                APIGlobals.response = rest.POSTRequest();
-                break;
-
-            case "PUT":
-                APIGlobals.response = rest.PUTRequest();
-                break;
-
-            case "DELETE":
-                APIGlobals.response = rest.DELETERequest();
-                break;
-
-            default:
-                break;
-        }
+        APIGlobals.response = RestLibrary.request(requestType);
     }
 
     @Then("^I verify that the status code is \"([^\"]*)\"$")
     public void verifyStatusCode(String expectedResponseCode) {
-        if (expectedResponseCode.equals(String.valueOf(RestLibrary.getResponseCode()))) {
-
-        } else {
-
-        }
+        System.out.println(APIGlobals.response.prettyPrint());
+        Assert.assertEquals(APIGlobals.response.getStatusCode(), Integer.parseInt(expectedResponseCode));
     }
 
     @And("^I validated response against schema \"([^\"]*)\"$")

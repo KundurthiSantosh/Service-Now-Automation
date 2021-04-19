@@ -1,0 +1,5 @@
+OneIncident:
+  pathParameters:
+  queryParameters:
+    sysparm_limit: "1"
+  requestBody:

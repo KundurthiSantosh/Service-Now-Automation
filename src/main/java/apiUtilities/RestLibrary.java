@@ -1,7 +1,9 @@
 package apiUtilities;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import commonUtilities.ConfigFileReader;
 import org.json.JSONObject;
@@ -10,11 +12,13 @@ import io.restassured.RestAssured;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.openqa.selenium.WebDriver;
 
 public class RestLibrary {
 
     JSONObjectIterator jsonObjectIterator = new JSONObjectIterator();
-    ConfigFileReader configFileReader = new ConfigFileReader();
+    static ConfigFileReader configFileReader = new ConfigFileReader();
+    private static final Map<String, Supplier<Response>> MAP = new HashMap<>();
 
     /**
      * This function returns a Response of the GET request.
@@ -22,12 +26,11 @@ public class RestLibrary {
      * @author Santosh Kundurthi
      * @return Response of GET request
      */
-    public Response GETRequest() {
+    private static final Supplier<Response> getRequest = () -> {
         RequestSpecification requestSpecification = RestAssured.given().auth().basic(configFileReader.getUsername(), configFileReader.getPassword());
         requestSpecification.header("Content-Type", APIGlobals.contentType);
         return requestSpecification.get(APIGlobals.endPointURL);
-
-    }
+    };
 
     /**
      * This function returns a Response of the PUT request.
@@ -35,33 +38,15 @@ public class RestLibrary {
      * @author Santosh Kundurthi
      * @return Response of PUT request
      */
-    public Response PUTRequest() {
+    private static final Supplier<Response> putRequest = () -> {
         RequestSpecification requestSpecification = RestAssured.given().auth().basic(configFileReader.getUsername(), configFileReader.getPassword());
         requestSpecification.header("Content-Type", APIGlobals.contentType);
         if (APIGlobals.requestBody.length() > 0) {
             requestSpecification.body(APIGlobals.requestBody);
             return requestSpecification.put(APIGlobals.endPointURL);
-        } else {
+        } else
             return null;
-        }
-    }
-
-    /**
-     * This function returns a Response of the DELETE request.
-     *
-     * @author Santosh Kundurthi
-     * @return Response of DELETE request
-     */
-    public Response DELETERequest() {
-        RequestSpecification requestSpecification = RestAssured.given().auth().basic(configFileReader.getUsername(), configFileReader.getPassword());
-        requestSpecification.header("Content-Type", APIGlobals.contentType);
-        if (APIGlobals.requestBody.length() > 0) {
-            requestSpecification.body(APIGlobals.requestBody);
-            return requestSpecification.delete(APIGlobals.endPointURL);
-        } else {
-            return null;
-        }
-    }
+    };
 
     /**
      * This function returns a Response of the POST request.
@@ -69,15 +54,41 @@ public class RestLibrary {
      * @author Santosh Kundurthi
      * @return Response of POST request
      */
-    public Response POSTRequest() {
+    private static final Supplier<Response> postRequest = () -> {
         RequestSpecification requestSpecification = RestAssured.given().auth().basic(configFileReader.getUsername(), configFileReader.getPassword());
         requestSpecification.header("Content-Type", APIGlobals.contentType);
         if (APIGlobals.requestBody.length() > 0) {
             requestSpecification.body(APIGlobals.requestBody);
             return requestSpecification.post(APIGlobals.endPointURL);
-        } else {
+        } else
             return null;
-        }
+    };
+
+    /**
+     * This function returns a Response of the DELETE request.
+     *
+     * @author Santosh Kundurthi
+     * @return Response of DELETE request
+     */
+    private static final Supplier<Response> deleteRequest = () -> {
+        RequestSpecification requestSpecification = RestAssured.given().auth().basic(configFileReader.getUsername(), configFileReader.getPassword());
+        requestSpecification.header("Content-Type", APIGlobals.contentType);
+        if (APIGlobals.requestBody.length() > 0) {
+            requestSpecification.body(APIGlobals.requestBody);
+            return requestSpecification.delete(APIGlobals.endPointURL);
+        } else
+            return null;
+    };
+
+    static {
+        MAP.put("GET", getRequest);
+        MAP.put("PUT", putRequest);
+        MAP.put("POST", postRequest);
+        MAP.put("DELETE", deleteRequest);
+    }
+
+    public static Response request(String requestType){
+        return MAP.get(requestType).get();
     }
 
     /**
@@ -143,5 +154,18 @@ public class RestLibrary {
      */
     public static int getResponseCode() {
         return APIGlobals.response.getStatusCode();
+    }
+
+    public static String setPathQueryParameters(String API){
+        if (APIGlobals.userData.get("pathParameters") != null) {
+            for (Map.Entry<String, Object> entry : APIGlobals.userData.get("pathParameters").entrySet())
+                API += "/" + entry.getValue().toString();
+        }
+        if (APIGlobals.userData.get("queryParameters") != null) {
+            API += "?";
+            for (Map.Entry<String, Object> entry : APIGlobals.userData.get("queryParameters").entrySet())
+                API += entry.getKey() + "=" + entry.getValue().toString();
+        }
+        return API;
     }
 }
