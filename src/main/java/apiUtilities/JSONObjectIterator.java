@@ -47,6 +47,10 @@ public class JSONObjectIterator {
         return keyValuePairs.get(key).toString();
     }
 
+    public boolean hasKey(String key){
+        return keyValuePairs.containsKey(key);
+    }
+
     public void setKeyValuePairs(Map<String, Object> keyValuePairs) {
         this.keyValuePairs = keyValuePairs;
     }

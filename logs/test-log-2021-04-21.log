@@ -1,0 +1,12 @@
+2021-04-21 23:34:38.873 INFO [main] [commonUtilities.YamlReader] [loadYaml] [commonUtilities.YamlReader.loadYaml(YamlReader.java:22)] - loaded testdata.yaml successfully!
+2021-04-21 23:34:38.882 INFO [main] [apiUtilities.RestLibrary] [setPathQueryParameters] [apiUtilities.RestLibrary.setPathQueryParameters(RestLibrary.java:166)] - Query parameter sysparm_limit = 1 is appended to endpoint
+2021-04-21 23:34:38.883 INFO [main] [steps.APICommonSteps] [setAPIEndpointURL] [steps.APICommonSteps.setAPIEndpointURL(APICommonSteps.java:30)] - Test Case = OneIncident
+2021-04-21 23:34:38.910 INFO [main] [steps.APICommonSteps] [setHeader] [steps.APICommonSteps.setHeader(APICommonSteps.java:37)] - Content type set as application/json
+2021-04-21 23:34:46.074 INFO [main] [steps.APICommonSteps] [submitRequest] [steps.APICommonSteps.submitRequest(APICommonSteps.java:51)] - Incident of GET is called!
+2021-04-21 23:34:46.077 INFO [main] [steps.APICommonSteps] [verifyStatusCode] [steps.APICommonSteps.verifyStatusCode(APICommonSteps.java:56)] - Status code is validated!
+2021-04-21 23:36:15.893 INFO [main] [commonUtilities.YamlReader] [loadYaml] [commonUtilities.YamlReader.loadYaml(YamlReader.java:22)] - loaded testdata.yaml successfully!
+2021-04-21 23:36:15.901 INFO [main] [apiUtilities.RestLibrary] [setPathQueryParameters] [apiUtilities.RestLibrary.setPathQueryParameters(RestLibrary.java:166)] - Query parameter sysparm_limit = 1 is appended to endpoint
+2021-04-21 23:36:15.902 INFO [main] [steps.APICommonSteps] [setAPIEndpointURL] [steps.APICommonSteps.setAPIEndpointURL(APICommonSteps.java:30)] - Test Case = OneIncident
+2021-04-21 23:36:15.928 INFO [main] [steps.APICommonSteps] [setHeader] [steps.APICommonSteps.setHeader(APICommonSteps.java:37)] - Content type set as application/json
+2021-04-21 23:36:23.665 INFO [main] [steps.APICommonSteps] [submitRequest] [steps.APICommonSteps.submitRequest(APICommonSteps.java:51)] - Incident API of GET request type is called!
+2021-04-21 23:36:23.668 INFO [main] [steps.APICommonSteps] [verifyStatusCode] [steps.APICommonSteps.verifyStatusCode(APICommonSteps.java:56)] - Status code is validated!

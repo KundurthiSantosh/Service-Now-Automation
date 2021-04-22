@@ -1,0 +1,580 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "required": [
+    "result"
+  ],
+  "properties": {
+    "result": {
+      "id": "#/properties/result",
+      "type": "object",
+      "title": "The result schema",
+      "required": [
+        "parent",
+        "made_sla",
+        "caused_by",
+        "watch_list",
+        "upon_reject",
+        "sys_updated_on",
+        "child_incidents",
+        "hold_reason",
+        "task_effective_number",
+        "approval_history",
+        "number",
+        "resolved_by",
+        "sys_updated_by",
+        "opened_by",
+        "user_input",
+        "sys_created_on",
+        "sys_domain",
+        "state",
+        "route_reason",
+        "sys_created_by",
+        "knowledge",
+        "order",
+        "calendar_stc",
+        "closed_at",
+        "cmdb_ci",
+        "delivery_plan",
+        "contract",
+        "impact",
+        "active",
+        "work_notes_list",
+        "business_service",
+        "priority",
+        "sys_domain_path",
+        "rfc",
+        "time_worked",
+        "expected_start",
+        "opened_at",
+        "business_duration",
+        "group_list",
+        "work_end",
+        "caller_id",
+        "reopened_time",
+        "resolved_at",
+        "approval_set",
+        "subcategory",
+        "work_notes",
+        "universal_request",
+        "short_description",
+        "close_code",
+        "correlation_display",
+        "delivery_task",
+        "work_start",
+        "assignment_group",
+        "additional_assignee_list",
+        "business_stc",
+        "description",
+        "calendar_duration",
+        "close_notes",
+        "notify",
+        "service_offering",
+        "sys_class_name",
+        "closed_by",
+        "follow_up",
+        "parent_incident",
+        "sys_id",
+        "contact_type",
+        "reopened_by",
+        "incident_state",
+        "urgency",
+        "problem_id",
+        "company",
+        "reassignment_count",
+        "activity_due",
+        "assigned_to",
+        "severity",
+        "comments",
+        "approval",
+        "sla_due",
+        "comments_and_work_notes",
+        "due_date",
+        "sys_mod_count",
+        "reopen_count",
+        "sys_tags",
+        "escalation",
+        "upon_approval",
+        "correlation_id",
+        "location",
+        "category"
+      ],
+      "properties": {
+        "parent": {
+          "id": "#/properties/result/properties/parent",
+          "type": "string",
+          "title": "The parent schema"
+        },
+        "made_sla": {
+          "id": "#/properties/result/properties/made_sla",
+          "type": "string",
+          "title": "The made_sla schema"
+        },
+        "caused_by": {
+          "id": "#/properties/result/properties/caused_by",
+          "type": "string",
+          "title": "The caused_by schema"
+        },
+        "watch_list": {
+          "id": "#/properties/result/properties/watch_list",
+          "type": "string",
+          "title": "The watch_list schema"
+        },
+        "upon_reject": {
+          "id": "#/properties/result/properties/upon_reject",
+          "type": "string",
+          "title": "The upon_reject schema"
+        },
+        "sys_updated_on": {
+          "id": "#/properties/result/properties/sys_updated_on",
+          "type": "string",
+          "title": "The sys_updated_on schema"
+        },
+        "child_incidents": {
+          "id": "#/properties/result/properties/child_incidents",
+          "type": "string",
+          "title": "The child_incidents schema"
+        },
+        "hold_reason": {
+          "id": "#/properties/result/properties/hold_reason",
+          "type": "string",
+          "title": "The hold_reason schema"
+        },
+        "task_effective_number": {
+          "id": "#/properties/result/properties/task_effective_number",
+          "type": "string",
+          "title": "The task_effective_number schema"
+        },
+        "approval_history": {
+          "id": "#/properties/result/properties/approval_history",
+          "type": "string",
+          "title": "The approval_history schema"
+        },
+        "number": {
+          "id": "#/properties/result/properties/number",
+          "type": "string",
+          "title": "The number schema"
+        },
+        "resolved_by": {
+          "id": "#/properties/result/properties/resolved_by",
+          "type": "string",
+          "title": "The resolved_by schema"
+        },
+        "sys_updated_by": {
+          "id": "#/properties/result/properties/sys_updated_by",
+          "type": "string",
+          "title": "The sys_updated_by schema"
+        },
+        "opened_by": {
+          "id": "#/properties/result/properties/opened_by",
+          "type": "object",
+          "title": "The opened_by schema",
+          "required": [
+            "link",
+            "value"
+          ],
+          "properties": {
+            "link": {
+              "id": "#/properties/result/properties/opened_by/properties/link",
+              "type": "string",
+              "title": "The link schema"
+            },
+            "value": {
+              "id": "#/properties/result/properties/opened_by/properties/value",
+              "type": "string",
+              "title": "The value schema"
+            }
+          }
+        },
+        "user_input": {
+          "id": "#/properties/result/properties/user_input",
+          "type": "string",
+          "title": "The user_input schema"
+        },
+        "sys_created_on": {
+          "id": "#/properties/result/properties/sys_created_on",
+          "type": "string",
+          "title": "The sys_created_on schema"
+        },
+        "sys_domain": {
+          "id": "#/properties/result/properties/sys_domain",
+          "type": "object",
+          "title": "The sys_domain schema",
+          "required": [
+            "link",
+            "value"
+          ],
+          "properties": {
+            "link": {
+              "id": "#/properties/result/properties/sys_domain/properties/link",
+              "type": "string",
+              "title": "The link schema"
+            },
+            "value": {
+              "id": "#/properties/result/properties/sys_domain/properties/value",
+              "type": "string",
+              "title": "The value schema"
+            }
+          }
+        },
+        "state": {
+          "id": "#/properties/result/properties/state",
+          "type": "string",
+          "title": "The state schema"
+        },
+        "route_reason": {
+          "id": "#/properties/result/properties/route_reason",
+          "type": "string",
+          "title": "The route_reason schema"
+        },
+        "sys_created_by": {
+          "id": "#/properties/result/properties/sys_created_by",
+          "type": "string",
+          "title": "The sys_created_by schema"
+        },
+        "knowledge": {
+          "id": "#/properties/result/properties/knowledge",
+          "type": "string",
+          "title": "The knowledge schema"
+        },
+        "order": {
+          "id": "#/properties/result/properties/order",
+          "type": "string",
+          "title": "The order schema"
+        },
+        "calendar_stc": {
+          "id": "#/properties/result/properties/calendar_stc",
+          "type": "string",
+          "title": "The calendar_stc schema"
+        },
+        "closed_at": {
+          "id": "#/properties/result/properties/closed_at",
+          "type": "string",
+          "title": "The closed_at schema"
+        },
+        "cmdb_ci": {
+          "id": "#/properties/result/properties/cmdb_ci",
+          "type": "string",
+          "title": "The cmdb_ci schema"
+        },
+        "delivery_plan": {
+          "id": "#/properties/result/properties/delivery_plan",
+          "type": "string",
+          "title": "The delivery_plan schema"
+        },
+        "contract": {
+          "id": "#/properties/result/properties/contract",
+          "type": "string",
+          "title": "The contract schema"
+        },
+        "impact": {
+          "id": "#/properties/result/properties/impact",
+          "type": "string",
+          "title": "The impact schema"
+        },
+        "active": {
+          "id": "#/properties/result/properties/active",
+          "type": "string",
+          "title": "The active schema"
+        },
+        "work_notes_list": {
+          "id": "#/properties/result/properties/work_notes_list",
+          "type": "string",
+          "title": "The work_notes_list schema"
+        },
+        "business_service": {
+          "id": "#/properties/result/properties/business_service",
+          "type": "string",
+          "title": "The business_service schema"
+        },
+        "priority": {
+          "id": "#/properties/result/properties/priority",
+          "type": "string",
+          "title": "The priority schema"
+        },
+        "sys_domain_path": {
+          "id": "#/properties/result/properties/sys_domain_path",
+          "type": "string",
+          "title": "The sys_domain_path schema"
+        },
+        "rfc": {
+          "id": "#/properties/result/properties/rfc",
+          "type": "string",
+          "title": "The rfc schema"
+        },
+        "time_worked": {
+          "id": "#/properties/result/properties/time_worked",
+          "type": "string",
+          "title": "The time_worked schema"
+        },
+        "expected_start": {
+          "id": "#/properties/result/properties/expected_start",
+          "type": "string",
+          "title": "The expected_start schema"
+        },
+        "opened_at": {
+          "id": "#/properties/result/properties/opened_at",
+          "type": "string",
+          "title": "The opened_at schema"
+        },
+        "business_duration": {
+          "id": "#/properties/result/properties/business_duration",
+          "type": "string",
+          "title": "The business_duration schema"
+        },
+        "group_list": {
+          "id": "#/properties/result/properties/group_list",
+          "type": "string",
+          "title": "The group_list schema"
+        },
+        "work_end": {
+          "id": "#/properties/result/properties/work_end",
+          "type": "string",
+          "title": "The work_end schema"
+        },
+        "caller_id": {
+          "id": "#/properties/result/properties/caller_id",
+          "type": "string",
+          "title": "The caller_id schema"
+        },
+        "reopened_time": {
+          "id": "#/properties/result/properties/reopened_time",
+          "type": "string",
+          "title": "The reopened_time schema"
+        },
+        "resolved_at": {
+          "id": "#/properties/result/properties/resolved_at",
+          "type": "string",
+          "title": "The resolved_at schema"
+        },
+        "approval_set": {
+          "id": "#/properties/result/properties/approval_set",
+          "type": "string",
+          "title": "The approval_set schema"
+        },
+        "subcategory": {
+          "id": "#/properties/result/properties/subcategory",
+          "type": "string",
+          "title": "The subcategory schema"
+        },
+        "work_notes": {
+          "id": "#/properties/result/properties/work_notes",
+          "type": "string",
+          "title": "The work_notes schema"
+        },
+        "universal_request": {
+          "id": "#/properties/result/properties/universal_request",
+          "type": "string",
+          "title": "The universal_request schema"
+        },
+        "short_description": {
+          "id": "#/properties/result/properties/short_description",
+          "type": "string",
+          "title": "The short_description schema"
+        },
+        "close_code": {
+          "id": "#/properties/result/properties/close_code",
+          "type": "string",
+          "title": "The close_code schema"
+        },
+        "correlation_display": {
+          "id": "#/properties/result/properties/correlation_display",
+          "type": "string",
+          "title": "The correlation_display schema"
+        },
+        "delivery_task": {
+          "id": "#/properties/result/properties/delivery_task",
+          "type": "string",
+          "title": "The delivery_task schema"
+        },
+        "work_start": {
+          "id": "#/properties/result/properties/work_start",
+          "type": "string",
+          "title": "The work_start schema"
+        },
+        "assignment_group": {
+          "id": "#/properties/result/properties/assignment_group",
+          "type": "string",
+          "title": "The assignment_group schema"
+        },
+        "additional_assignee_list": {
+          "id": "#/properties/result/properties/additional_assignee_list",
+          "type": "string",
+          "title": "The additional_assignee_list schema"
+        },
+        "business_stc": {
+          "id": "#/properties/result/properties/business_stc",
+          "type": "string",
+          "title": "The business_stc schema"
+        },
+        "description": {
+          "id": "#/properties/result/properties/description",
+          "type": "string",
+          "title": "The description schema"
+        },
+        "calendar_duration": {
+          "id": "#/properties/result/properties/calendar_duration",
+          "type": "string",
+          "title": "The calendar_duration schema"
+        },
+        "close_notes": {
+          "id": "#/properties/result/properties/close_notes",
+          "type": "string",
+          "title": "The close_notes schema"
+        },
+        "notify": {
+          "id": "#/properties/result/properties/notify",
+          "type": "string",
+          "title": "The notify schema"
+        },
+        "service_offering": {
+          "id": "#/properties/result/properties/service_offering",
+          "type": "string",
+          "title": "The service_offering schema"
+        },
+        "sys_class_name": {
+          "id": "#/properties/result/properties/sys_class_name",
+          "type": "string",
+          "title": "The sys_class_name schema"
+        },
+        "closed_by": {
+          "id": "#/properties/result/properties/closed_by",
+          "type": "string",
+          "title": "The closed_by schema"
+        },
+        "follow_up": {
+          "id": "#/properties/result/properties/follow_up",
+          "type": "string",
+          "title": "The follow_up schema"
+        },
+        "parent_incident": {
+          "id": "#/properties/result/properties/parent_incident",
+          "type": "string",
+          "title": "The parent_incident schema"
+        },
+        "sys_id": {
+          "id": "#/properties/result/properties/sys_id",
+          "type": "string",
+          "title": "The sys_id schema"
+        },
+        "contact_type": {
+          "id": "#/properties/result/properties/contact_type",
+          "type": "string",
+          "title": "The contact_type schema"
+        },
+        "reopened_by": {
+          "id": "#/properties/result/properties/reopened_by",
+          "type": "string",
+          "title": "The reopened_by schema"
+        },
+        "incident_state": {
+          "id": "#/properties/result/properties/incident_state",
+          "type": "string",
+          "title": "The incident_state schema"
+        },
+        "urgency": {
+          "id": "#/properties/result/properties/urgency",
+          "type": "string",
+          "title": "The urgency schema"
+        },
+        "problem_id": {
+          "id": "#/properties/result/properties/problem_id",
+          "type": "string",
+          "title": "The problem_id schema"
+        },
+        "company": {
+          "id": "#/properties/result/properties/company",
+          "type": "string",
+          "title": "The company schema"
+        },
+        "reassignment_count": {
+          "id": "#/properties/result/properties/reassignment_count",
+          "type": "string",
+          "title": "The reassignment_count schema"
+        },
+        "activity_due": {
+          "id": "#/properties/result/properties/activity_due",
+          "type": "string",
+          "title": "The activity_due schema"
+        },
+        "assigned_to": {
+          "id": "#/properties/result/properties/assigned_to",
+          "type": "string",
+          "title": "The assigned_to schema"
+        },
+        "severity": {
+          "id": "#/properties/result/properties/severity",
+          "type": "string",
+          "title": "The severity schema"
+        },
+        "comments": {
+          "id": "#/properties/result/properties/comments",
+          "type": "string",
+          "title": "The comments schema"
+        },
+        "approval": {
+          "id": "#/properties/result/properties/approval",
+          "type": "string",
+          "title": "The approval schema"
+        },
+        "sla_due": {
+          "id": "#/properties/result/properties/sla_due",
+          "type": "string",
+          "title": "The sla_due schema"
+        },
+        "comments_and_work_notes": {
+          "id": "#/properties/result/properties/comments_and_work_notes",
+          "type": "string",
+          "title": "The comments_and_work_notes schema"
+        },
+        "due_date": {
+          "id": "#/properties/result/properties/due_date",
+          "type": "string",
+          "title": "The due_date schema"
+        },
+        "sys_mod_count": {
+          "id": "#/properties/result/properties/sys_mod_count",
+          "type": "string",
+          "title": "The sys_mod_count schema"
+        },
+        "reopen_count": {
+          "id": "#/properties/result/properties/reopen_count",
+          "type": "string",
+          "title": "The reopen_count schema"
+        },
+        "sys_tags": {
+          "id": "#/properties/result/properties/sys_tags",
+          "type": "string",
+          "title": "The sys_tags schema"
+        },
+        "escalation": {
+          "id": "#/properties/result/properties/escalation",
+          "type": "string",
+          "title": "The escalation schema"
+        },
+        "upon_approval": {
+          "id": "#/properties/result/properties/upon_approval",
+          "type": "string",
+          "title": "The upon_approval schema"
+        },
+        "correlation_id": {
+          "id": "#/properties/result/properties/correlation_id",
+          "type": "string",
+          "title": "The correlation_id schema"
+        },
+        "location": {
+          "id": "#/properties/result/properties/location",
+          "type": "string",
+          "title": "The location schema"
+        },
+        "category": {
+          "id": "#/properties/result/properties/category",
+          "type": "string",
+          "title": "The category schema"
+        }
+      }
+    }
+  }
+}

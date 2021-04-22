@@ -3,3 +3,40 @@ OneIncident:
   queryParameters:
     sysparm_limit: "1"
   requestBody:
+
+TenIncidents:
+  pathParameters:
+  queryParameters:
+    sysparm_limit: "10"
+  requestBody:
+
+CreateIncident:
+  pathParameters:
+  queryParameters:
+  requestBody:
+    short_description: "Unable to connect to office wifi"
+    assignment_group: "287ebd7da9fe198100f92cc8d1d2154e"
+    urgency: "2"
+    impact: "2"
+
+GetIncident17:
+  pathParameters:
+    parameter1: "d5caa5e7db67e410bb75e04a4896195d"
+  queryParameters:
+  requestBody:
+  responseValues:
+    madeSla: "true"
+    taskEffectiveNumber: "INC0010017"
+    number: "INC0010017"
+    sysUpdatedBy: "admin"
+
+GetIncident14:
+  pathParameters:
+    parameter1: "30a8e5e3db67e410bb75e04a489619fd"
+  queryParameters:
+  requestBody:
+  responseValues:
+    made-sla: "true"
+    taskEffectiveNumber: "INC0010014"
+    number: "INC0010014"
+    sysUpdatedBy: "admin"

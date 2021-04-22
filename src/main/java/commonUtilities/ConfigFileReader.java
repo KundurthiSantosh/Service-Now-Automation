@@ -34,25 +34,48 @@ public class ConfigFileReader {
     public String getDriverPath(){
         String driverPath = properties.getProperty("drivers-path");
         if(driverPath!= null) return driverPath;
-        else throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
+        else throw new RuntimeException("Driver path not specified in the Configuration.properties file.");
     }
 
-    public long getImplicitWait() {
-        String implicitlyWait = properties.getProperty("implicit-wait");
-        if(implicitlyWait != null) return Long.parseLong(implicitlyWait);
-        else throw new RuntimeException("implicitlyWait not specified in the Configuration.properties file.");
+    public long getMinWait() {
+        String minWait = properties.getProperty("min-wait");
+        if(minWait != null) return Long.parseLong(minWait);
+        else throw new RuntimeException("Minimum wait is not specified in the Configuration.properties file.");
+    }
+
+    public long getMaxWait() {
+        String maxWait = properties.getProperty("max-wait");
+        if(maxWait != null) return Long.parseLong(maxWait);
+        else throw new RuntimeException("Maximum wait is not specified in the Configuration.properties file.");
     }
 
     public String getApiBaseUrl() {
         String url = properties.getProperty("api-base-url");
         if(url != null) return url;
-        else throw new RuntimeException("url not specified in the Configuration.properties file.");
+        else throw new RuntimeException("API URL not specified in the Configuration.properties file.");
     }
 
     public String getTestDataPath(){
         String testDataPath = properties.getProperty("test-data-path");
         if(testDataPath != null) return testDataPath;
         else throw new RuntimeException("test data path not specified in the Configuration.properties file.");
+    }
+
+    public String getAPITestDataFile(){
+        String testDataFile = properties.getProperty("api-test-data-file");
+        if(testDataFile != null) return testDataFile;
+        else throw new RuntimeException("API test data file is not specified in the Configuration.properties file.");
+    }
+
+    public String getReportsPath(){
+        String reportsPath = properties.getProperty("reports-path");
+        if(reportsPath != null) return reportsPath;
+        else throw new RuntimeException("Reports path not specified in the Configuration.properties file.");
+    }
+    public String getReportsFile(){
+        String reportsFile = properties.getProperty("reports-file");
+        if(reportsFile != null) return reportsFile;
+        else throw new RuntimeException("Reports file name not specified in the Configuration.properties file.");
     }
 
     public String getUsername(){
@@ -67,5 +90,26 @@ public class ConfigFileReader {
         if(password != null) return password;
         else
             throw new RuntimeException("Password not found in the Configuration.properties file.");
+    }
+
+    public String getProjectName(){
+        String projectName = properties.getProperty("project-name");
+        if(projectName != null) return projectName;
+        else
+            throw new RuntimeException("Project Name not found in the Configuration.properties file.");
+    }
+
+    public String getReleaseName(){
+        String releaseName = properties.getProperty("release-name");
+        if(releaseName != null) return releaseName;
+        else
+            throw new RuntimeException("Release not found in the Configuration.properties file.");
+    }
+
+    public String getEnvironment(){
+        String environment = properties.getProperty("environment");
+        if(environment != null) return environment;
+        else
+            throw new RuntimeException("Environment not found in the Configuration.properties file.");
     }
 }
