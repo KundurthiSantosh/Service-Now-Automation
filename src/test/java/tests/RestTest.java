@@ -16,7 +16,7 @@ public class RestTest {
 
         RestAssured.baseURI = config.getApiBaseUrl();
 
-        RequestSpecification httpRequest = RestAssured.given().auth().basic("admin","jfawMOkVD46Y");
+        RequestSpecification httpRequest = RestAssured.given().auth().basic("admin", "jfawMOkVD46Y");
 
         Response response = httpRequest.get();
 

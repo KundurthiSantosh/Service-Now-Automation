@@ -76,14 +76,12 @@ public class APICommonSteps {
 
     @And("^I validated response against schema \"([^\"]*)\"$")
     public void verifySchema(String schemaFileName) {
-        if(schemaFileName.trim().length() == 0) {
+        if (schemaFileName.trim().length() == 0) {
             logger.error("Schema file name is empty. Please provide schema file to validate.");
             reporter.logStep(StepStatus.FAIL, "Schema file is empty");
+        } else if (rest.validateSchema(schemaFileName)) {
+            reporter.logStep(StepStatus.PASS, "Schema of API response body matches that of expected");
         }
-        else
-            if (rest.validateSchema(schemaFileName)){
-                reporter.logStep(StepStatus.PASS, "Schema of API response body matches that of expected");
-            }
     }
 
     @And("^I validated the response values with \"([^\"]*)\"$")

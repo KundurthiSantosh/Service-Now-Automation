@@ -9,9 +9,9 @@ Feature: Testing Incident Table under now namespace in Service Now
     Then I verify that the status code is "<StatusCode>"
 
     Examples:
-      | TestName    | API      | ContentType      | RequestType | StatusCode |
-      | OneIncident | Incident | application/json | GET         | 200        |
-      | TenIncidents| Incident | application/json | GET         | 200        |
+      | TestName     | API      | ContentType      | RequestType | StatusCode |
+      | OneIncident  | Incident | application/json | GET         | 200        |
+      | TenIncidents | Incident | application/json | GET         | 200        |
 
   @PostIncident @CreateIncident
   Scenario Outline: Test Incident table to create records
@@ -22,8 +22,8 @@ Feature: Testing Incident Table under now namespace in Service Now
     Then I validated response against schema "<Schema>"
 
     Examples:
-      | TestName       | API      | ContentType      | RequestType  | StatusCode | Schema                    |
-      | CreateIncident | Incident | application/json | POST         | 201        | CreateIncidentSchema.json |
+      | TestName       | API      | ContentType      | RequestType | StatusCode | Schema                    |
+      | CreateIncident | Incident | application/json | POST        | 201        | CreateIncidentSchema.json |
 
   @GetSingleIncident @RetrieveSingleIncident
   Scenario Outline: Test Incident table to retrieve record based on sys id
@@ -35,6 +35,6 @@ Feature: Testing Incident Table under now namespace in Service Now
     Then I validated the response values with "<POJOClass>"
 
     Examples:
-      | TestName      | API      | ContentType      | RequestType  | StatusCode | Schema                 | POJOClass         |
-      | GetIncident17 | Incident | application/json | GET          | 200        | GetIncidentSchema.json | GetSingleIncident |
-      | GetIncident14 | Incident | application/json | GET          | 200        | GetIncidentSchema.json | GetSingleIncident |
+      | TestName      | API      | ContentType      | RequestType | StatusCode | Schema                 | POJOClass         |
+      | GetIncident17 | Incident | application/json | GET         | 200        | GetIncidentSchema.json | GetSingleIncident |
+      | GetIncident14 | Incident | application/json | GET         | 200        | GetIncidentSchema.json | GetSingleIncident |

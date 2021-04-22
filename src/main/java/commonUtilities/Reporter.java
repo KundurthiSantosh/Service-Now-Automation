@@ -33,7 +33,7 @@ public class Reporter {
         extent.setSystemInfo("Release Name", sReleaseName);
     }
 
-    public void startTest(String scenarioName){
+    public void startTest(String scenarioName) {
         test = extent.createTest(scenarioName);
     }
 

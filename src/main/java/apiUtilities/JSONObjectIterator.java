@@ -43,11 +43,11 @@ public class JSONObjectIterator {
         return keyValuePairs;
     }
 
-    public String getValueFromKey(String key){
+    public String getValueFromKey(String key) {
         return keyValuePairs.get(key).toString();
     }
 
-    public boolean hasKey(String key){
+    public boolean hasKey(String key) {
         return keyValuePairs.containsKey(key);
     }
 

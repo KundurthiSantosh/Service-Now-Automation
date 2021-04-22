@@ -119,7 +119,7 @@ public class RestLibrary {
                 jsonObjectIterator.handleJSONObject(new JSONObject(new Gson().toJson(
                         APIGlobals.response.getBody().as(Class.forName("responses." + POJOClass)))));
                 for (Map.Entry<String, Object> entry : APIGlobals.userData.get("responseValues").entrySet())
-                    if(jsonObjectIterator.hasKey(entry.getKey()))
+                    if (jsonObjectIterator.hasKey(entry.getKey()))
                         if (entry.getValue().toString().equals(jsonObjectIterator.getValueFromKey(entry.getKey())))
                             reporter.logStep(StepStatus.PASS, "Value " + entry.getKey() + " from response is as expected "
                                     + entry.getValue().toString());

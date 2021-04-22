@@ -12,22 +12,22 @@ public class YamlReader {
     private static final Logger logger = LogManager.getLogger(YamlReader.class);
 
     @SuppressWarnings("unchecked")
-    public Map<String, Map<String, Object>> loadYaml(String userCode, String file){
+    public Map<String, Map<String, Object>> loadYaml(String userCode, String file) {
         InputStream input;
         Map<String, Map<String, Map<String, Object>>> data = null;
-        try{
+        try {
             input = new FileInputStream(new File(System.getProperty("user.dir") + config.getTestDataPath() + file));
             Yaml yaml = new Yaml();
             data = (Map<String, Map<String, Map<String, Object>>>) yaml.load(input);
             logger.info("loaded " + file + " successfully!");
             input.close();
-        }catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             logger.error(file + " was not found in test data folder!");
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(data.get(userCode) == null) {
+        if (data.get(userCode) == null) {
             logger.error(userCode + " data not found in " + file);
             return null;
         }
