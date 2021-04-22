@@ -10,13 +10,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WebControls extends TestCaseHelper {
+public class WebControls extends BaseTest {
     public static Logger log = LogManager.getLogger(WebControls.class);
-    Sync sync = new Sync();
 
     public static boolean clickElement(WebElement element) {
         boolean bFlag = false;
@@ -25,18 +27,22 @@ public class WebControls extends TestCaseHelper {
         return bFlag = true;
     }
 
-    public boolean safeClickElement(By path, int waitTime) {
+    public static String getPageTitle(){
+        return driver.getTitle();
+    }
+
+    public static boolean safeClickElement(By path, int waitTime) {
         boolean bFlag = false;
-        if (sync.isElementDisplayed(path, waitTime) && sync.isEnabled(path, waitTime)) {
+        if (Sync.isElementDisplayed(path, waitTime) && Sync.isEnabled(path, waitTime)) {
             WebElement ele = driver.findElement(path);
             ele.click();
         }
         return bFlag = true;
     }
 
-    public boolean safeJavaScriptClick(By path, int waitTime) {
+    public static boolean safeJavaScriptClick(By path, int waitTime) {
         boolean bFlag = false;
-        if (sync.isElementDisplayed(path, waitTime) && sync.isEnabled(path, waitTime)) {
+        if (Sync.isElementDisplayed(path, waitTime) && Sync.isEnabled(path, waitTime)) {
             WebElement ele = driver.findElement(path);
             ((JavascriptExecutor) driver).executeScript("arguments[0].click()", ele);
             bFlag = true;
@@ -44,18 +50,19 @@ public class WebControls extends TestCaseHelper {
         return bFlag = true;
     }
 
-    public boolean safeEnterValue(By path, String sValue, int waitTime) {
+    public static boolean safeEnterValue(By path, String sValue, int waitTime) {
         boolean bFlag = false;
-        if (sync.isElementDisplayed(path, waitTime) && sync.isEnabled(path, waitTime)) {
+        if (Sync.isElementDisplayed(path, waitTime) && Sync.isEnabled(path, waitTime)) {
             WebElement ele = driver.findElement(path);
             ele.sendKeys(sValue);
+            bFlag = true;
         }
-        return bFlag = true;
+        return bFlag;
     }
 
-    public boolean safeClearandEnterValue(By path, String sValue, int waitTime) {
+    public static boolean safeClearandEnterValue(By path, String sValue, int waitTime) {
         boolean bFlag = false;
-        if (sync.isElementDisplayed(path, waitTime) && sync.isEnabled(path, waitTime)) {
+        if (Sync.isElementDisplayed(path, waitTime) && Sync.isEnabled(path, waitTime)) {
             WebElement ele = driver.findElement(path);
             ele.clear();
             ele.sendKeys(sValue);
@@ -63,27 +70,31 @@ public class WebControls extends TestCaseHelper {
         return bFlag = true;
     }
 
-    public String safeGetAttribute(By path, String sAttributeValue, int waitTime) {
+    public static String safeGetAttribute(By path, String sAttributeValue, int waitTime) {
         String sReturnValue = null;
-        if (sync.isElementDisplayed(path, waitTime)) {
+        if (Sync.isElementDisplayed(path, waitTime)) {
             WebElement ele = driver.findElement(path);
             sReturnValue = ele.getAttribute(sAttributeValue);
         }
         return sReturnValue;
     }
 
-    public String safeGetText(By path, int waitTime) {
+    public static void switchToIframe(String frameName, int waitTime){
+        WebDriverWait wait = new WebDriverWait(driver, waitTime);
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
+    }
+    public static String safeGetText(By path, int waitTime) {
         String sText = null;
-        if (sync.isElementDisplayed(path, waitTime) && sync.isEnabled(path, waitTime)) {
+        if (Sync.isElementDisplayed(path, waitTime) && Sync.isEnabled(path, waitTime)) {
             WebElement ele = driver.findElement(path);
             sText = ele.getText().trim();
         }
         return sText;
     }
 
-    public boolean safeSelectByVisibleText(By path, String sVisibleText, int waitTime) {
+    public static boolean safeSelectByVisibleText(By path, String sVisibleText, int waitTime) {
         boolean bFlag = false;
-        if (sync.isElementDisplayed(path, waitTime) && sync.isEnabled(path, waitTime)) {
+        if (Sync.isElementDisplayed(path, waitTime) && Sync.isEnabled(path, waitTime)) {
             WebElement ele = driver.findElement(path);
             Select select = new Select(ele);
             select.selectByVisibleText(sVisibleText);
@@ -92,9 +103,9 @@ public class WebControls extends TestCaseHelper {
         return bFlag;
     }
 
-    public boolean safeSelectByIndex(By path, int iIndex, int waitTime) {
+    public static boolean safeSelectByIndex(By path, int iIndex, int waitTime) {
         boolean bFlag = false;
-        if (sync.isElementDisplayed(path, waitTime) && sync.isEnabled(path, waitTime)) {
+        if (Sync.isElementDisplayed(path, waitTime) && Sync.isEnabled(path, waitTime)) {
             WebElement ele = driver.findElement(path);
             Select select = new Select(ele);
             select.selectByIndex(iIndex);
@@ -103,9 +114,9 @@ public class WebControls extends TestCaseHelper {
         return bFlag;
     }
 
-    public boolean safeSelecx(By path, String sValue, int waitTime) {
+    public static boolean safeSelecx(By path, String sValue, int waitTime) {
         boolean bFlag = false;
-        if (sync.isElementDisplayed(path, waitTime) && sync.isEnabled(path, waitTime)) {
+        if (Sync.isElementDisplayed(path, waitTime) && Sync.isEnabled(path, waitTime)) {
             WebElement ele = driver.findElement(path);
             Select select = new Select(ele);
             select.selectByValue(sValue);
@@ -114,25 +125,34 @@ public class WebControls extends TestCaseHelper {
         return bFlag;
     }
 
-    public List<WebElement> getListofElements(By path, int waitTime) {
+    public static List<WebElement> getListofElements(By path, int waitTime) {
         List<WebElement> elementList = null;
-        boolean bFlag = sync.isElementPresent(path, waitTime);
+        boolean bFlag = Sync.isElementPresent(path, waitTime);
         if (bFlag) {
             elementList = driver.findElements(path);
         }
         return elementList;
     }
 
-    public void pageScrolldown() {
+    public static void pageScrolldown() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0, document.body.scrollHeight)");
     }
 
-    public void pageScrollUntilElementIsViewed(By path, int waitTime) {
-        if (sync.isElementDisplayed(path, waitTime) && sync.isEnabled(path, waitTime)) {
+    public static void pageScrollUntilElementIsVisible(By path, int waitTime) {
+        if (Sync.isElementDisplayed(path, waitTime) && Sync.isEnabled(path, waitTime)) {
             WebElement ele = driver.findElement(path);
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].scrollIntoView();", ele);
+        }
+    }
+
+    public static void pageScrollUntilElementIsVisibleActions(By path, int waitTime) {
+        if (Sync.isElementDisplayed(path, waitTime) && Sync.isEnabled(path, waitTime)) {
+            WebElement ele = driver.findElement(path);
+            Actions a = new Actions(driver);
+            a.moveToElement(ele);
+            a.perform();
         }
     }
 
@@ -214,5 +234,9 @@ public class WebControls extends TestCaseHelper {
             status = false;
         }
         return status;
+    }
+
+    public static void sendEnterKey(By path){
+        driver.findElement(path).sendKeys(Keys.ENTER);
     }
 }

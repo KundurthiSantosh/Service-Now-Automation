@@ -8,9 +8,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class Sync extends TestCaseHelper {
+public class Sync extends BaseTest {
 
-    public boolean isElementDisplayed(By path, int waitTime) {
+    public static boolean isElementDisplayed(By path, int waitTime) {
         nullifyImplicitWait();
         boolean bFlag = false;
 
@@ -23,7 +23,7 @@ public class Sync extends TestCaseHelper {
         return bFlag;
     }
 
-    public boolean isElementPresent(By path, int waitTime) {
+    public static boolean isElementPresent(By path, int waitTime) {
         nullifyImplicitWait();
         boolean bFlag = false;
 
@@ -40,7 +40,7 @@ public class Sync extends TestCaseHelper {
         return bFlag;
     }
 
-    public boolean isEnabled(By path, int waitTime) {
+    public static boolean isEnabled(By path, int waitTime) {
         boolean bElementDisplayFlag = isElementDisplayed(path, waitTime);
         boolean bEnableFlag = false;
         WebElement ele = null;
@@ -51,7 +51,7 @@ public class Sync extends TestCaseHelper {
         return bEnableFlag;
     }
 
-    public WebElement getWebElement(By path, int waitTime) {
+    public static WebElement getWebElement(By path, int waitTime) {
         WebElement ele = null;
         if (isElementPresent(path, waitTime)) {
             ele = driver.findElement(path);
@@ -59,7 +59,7 @@ public class Sync extends TestCaseHelper {
         return ele;
     }
 
-    private void nullifyImplicitWait() {
+    private static void nullifyImplicitWait() {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     }
 

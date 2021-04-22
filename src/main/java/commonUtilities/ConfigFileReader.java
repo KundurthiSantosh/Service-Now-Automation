@@ -29,26 +29,26 @@ public class ConfigFileReader {
         }
     }
 
-    public String getDriverPath() {
-        String driverPath = properties.getProperty("drivers-path");
-        if (driverPath != null) return driverPath;
-        else throw new RuntimeException("Driver path not specified in the Configuration.properties file.");
-    }
-
-    public long getMinWait() {
+    public int getMinWait() {
         String minWait = properties.getProperty("min-wait");
-        if (minWait != null) return Long.parseLong(minWait);
+        if (minWait != null) return Integer.parseInt(minWait);
         else throw new RuntimeException("Minimum wait is not specified in the Configuration.properties file.");
     }
 
-    public long getMaxWait() {
+    public int getMaxWait() {
         String maxWait = properties.getProperty("max-wait");
-        if (maxWait != null) return Long.parseLong(maxWait);
+        if (maxWait != null) return Integer.parseInt(maxWait);
         else throw new RuntimeException("Maximum wait is not specified in the Configuration.properties file.");
     }
 
     public String getApiBaseUrl() {
         String url = properties.getProperty("api-base-url");
+        if (url != null) return url;
+        else throw new RuntimeException("API URL not specified in the Configuration.properties file.");
+    }
+
+    public String getWebBaseUrl() {
+        String url = properties.getProperty("web-base-url");
         if (url != null) return url;
         else throw new RuntimeException("API URL not specified in the Configuration.properties file.");
     }
